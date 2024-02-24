@@ -39,12 +39,12 @@ function WhatsAppTabs() {
 
 function MyDrawer() {
     return (
-      <Drawer.Navigator>
-        <Drawer.Screen name="Chats" component={Chats} />
-        <Drawer.Screen name="Updates" component={Updates} />
-        <Drawer.Screen name="Calls" component={Calls} />
-      </Drawer.Navigator>
+        <Drawer.Navigator>
+            <Drawer.Screen name="Chats" component={Chats} />
+            <Drawer.Screen name="Updates" component={Updates} />
+            <Drawer.Screen name="Calls" component={Calls} />
+        </Drawer.Navigator>
     );
-  }
+}
 
-export {AppNavigator, WhatsAppTabs, MyDrawer};
+export { AppNavigator, WhatsAppTabs, MyDrawer };
