@@ -1,0 +1,94 @@
+map view expo (
+    
+npx expo install react-native-maps
+
+import MapView from 'react-native-maps'
+
+    
+export default function App () {
+  return (
+    <View style={styles.container}>
+      <MapView style={styles.map} />
+    </View>
+  );
+} 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+});
+)
+
+expo location (
+
+npx expo install expo-location
+
+phr app.jcon me jakr isko past karna ha
+
+ "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+
+phr ye marker ka kam hoga
+
+import * as Location from 'expo-location';
+
+function me jakr 
+
+const [location, setLocation] = useState(null);
+const [errorMsg, setErrorMsg] = useState(null);
+
+useEffect(() => {
+    (async () => {
+      
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+      console.log("🚀 ~ location:", location)
+    })();
+  }, []);
+
+if(errorMsg){
+  return <text>{errorMsg}</text>
+}
+if(!locaion){
+  return <text>lodding</text>
+}
+
+longititudeDelta , latitudeDelta zoom out keliye hai 
+
+initialRegion {
+  latitude: location.coords.latitude,
+  longitude: location.coords.longitid,
+  latitudeDelta: Number,
+  longitudeDelta: Number,
+}
+
+marker keliye 
+----- 
+
+realtime location keliye 
+
+Location.stopLocationUpdatesAsync({
+  accuracy: 6 , 
+  distanceInterval: 1,
+  timeInterval: 1000,
+
+},(loction) => {
+  console.log("🚀 ~ loction:", loction)
+  return {
+}
+})
+
+)
