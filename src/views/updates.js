@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, Text, StyleSheet, Button } from "react-native";
 import * as Location from 'expo-location';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { API_KEY } from '../config/constant';
 
 function Updates({ navigation }) {
     const [location, setLocation] = useState(null);
@@ -28,6 +30,7 @@ function Updates({ navigation }) {
         })();
     }, []);
 
+
     let text = 'Waiting..';
     if (errorMsg) {
         text = errorMsg;
@@ -35,33 +38,53 @@ function Updates({ navigation }) {
         text = JSON.stringify(location);
     }
 
+    
     return (
         <>
             {location && (
                 <View style={styles.container}>
+
+                    <View style={{zIndex:1, flex: 1, height: '100%'}}> 
+                    <GooglePlacesAutocomplete
+                        placeholder='Search'
+                        onPress={(data, details = null) => {
+                            // 'details' is provided when fetchDetails = true
+                            console.log(data, details);
+                        }}
+                        query={{
+                            key: API_KEY,
+                            language: 'en',
+                        }}
+                    />
+                    </View>
+
                     <Button
                         title="Press me"
                         onPress={() => navigation.navigate('Calls')}
                     />
-                    <Text>
-                        Pickup
-                    </Text>
-                    <MapView style={styles.map}
+                    
+                    <Text>Pickup</Text>
+
+                    <MapView
+                        showsMyLocationButton
+                        showsUserLocation
+                        provider={PROVIDER_GOOGLE}
+                        style={styles.map}
                         initialRegion={{
                             latitude: location.coords.latitude,
                             longitude: location.coords.longitude,
                             latitudeDelta: 0.0001,
                             longitudeDelta: 0.0001,
-                        }}
-                    >
+                        }}>
+
                         <Marker
                             coordinate={{
                                 latitude: location.coords.latitude,
                                 longitude: location.coords.longitude,
                             }}
-                            title={"My Marker Title"}
-                            description={"This is my marker description"}
-                        />
+                            title={"your location"}
+                            description={"This is my marker description"} />
+
                     </MapView>
                 </View>
 
@@ -78,5 +101,6 @@ const styles = StyleSheet.create({
     map: {
         width: '100%',
         height: '100%',
+        zIndex: 0
     },
 });
