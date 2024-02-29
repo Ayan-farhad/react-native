@@ -6,8 +6,8 @@ function Chats({ navigation }) {
             <View>
                 <Button
                     title="Press me"
-                    onPress={() =>navigation.navigate('Updates')}/>
-                </View>
+                    onPress={() => navigation.navigate('Updates')} />
+            </View>
         </>
     )
 };
