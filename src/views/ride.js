@@ -10,6 +10,6 @@ function Ride({ navigation }) {
             </View>
         </>
     );
-}
+} 
 
 export default Ride;
