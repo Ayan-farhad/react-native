@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, Text, StyleSheet, Button } from "react-native";
 import * as Location from 'expo-location';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { API_KEY } from '../config/constant';
 
-function Updates({ navigation }) {
+function PickUp({ navigation }) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
@@ -44,23 +42,9 @@ function Updates({ navigation }) {
             {location && (
                 <View style={styles.container}>
 
-                    <View style={{zIndex:1, flex: 1, height: '100%'}}> 
-                    <GooglePlacesAutocomplete
-                        placeholder='Search'
-                        onPress={(data, details = null) => {
-                            // 'details' is provided when fetchDetails = true
-                            console.log(data, details);
-                        }}
-                        query={{
-                            key: API_KEY,
-                            language: 'en',
-                        }}
-                    />
-                    </View>
-
                     <Button
-                        title="Press me"
-                        onPress={() => navigation.navigate('Calls')}
+                        title="Destination"
+                        onPress={() => navigation.navigate('Destination')}
                     />
                     
                     <Text>Pickup</Text>
@@ -82,7 +66,7 @@ function Updates({ navigation }) {
                                 latitude: location.coords.latitude,
                                 longitude: location.coords.longitude,
                             }}
-                            title={"your location"}
+                            title={"My location"}
                             description={"This is my marker description"} />
 
                     </MapView>
@@ -93,14 +77,14 @@ function Updates({ navigation }) {
     );
 }
 
-export default Updates;
+export default PickUp;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
     map: {
         width: '100%',
-        height: '100%',
+        height: '90%',
         zIndex: 0
     },
 });

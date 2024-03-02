@@ -80,6 +80,7 @@ marker keliye
 
 realtime location keliye 
 
+
 Location.stopLocationUpdatesAsync({
   accuracy: 6 , 
   distanceInterval: 1,
@@ -91,4 +92,9 @@ Location.stopLocationUpdatesAsync({
 }
 })
 
+)
+
+Search Location keliye (
+  FourSquare : login developer console me jaker sign up karna hoga 
+  project banana hga or api generate karni hai
 )

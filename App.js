@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { AppNavigator, MyDrawer, WhatsAppTabs } from './src/config/navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
@@ -10,16 +10,16 @@ export default function App() {
         <View style={styles.container}></View>
       </AppNavigator>*/}
 
-
-      {/* <NavigationContainer>
-        <MyDrawer />
-      </NavigationContainer> */}
-
-
-      <View style={styles.container}></View>
+      {/* <View style={styles.container}></View>
       <NavigationContainer >
         <WhatsAppTabs />
+      </NavigationContainer> */}
+
+      <NavigationContainer>
+        <MyDrawer />
       </NavigationContainer>
+
+
     </>
   );
 }
