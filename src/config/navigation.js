@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Ride from '../views/ride';
 import PickUp from '../views/pickup';
 import Destination from '../views/destination';
+import VehicleSelection from '../views/vehicle';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -43,6 +44,7 @@ function MyDrawer() {
             <Drawer.Screen name="Ride" component={Ride} />
             <Drawer.Screen name="PickUp" component={PickUp} />
             <Drawer.Screen name="Destination" component={Destination} />
+            <Drawer.Screen name="VehicleSelection" component={VehicleSelection} />
         </Drawer.Navigator>
     );
 }

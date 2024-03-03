@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from "react-native";
 import * as Location from 'expo-location';
 
 function PickUp({ navigation }) {
@@ -21,26 +21,26 @@ function PickUp({ navigation }) {
             Location.watchPositionAsync({
                 accuracy: 6,
                 distanceInterval: 1,
-            }, (newLocation) => {
-                setLocation(newLocation);
-                console.log("🚀 ~ newLocation:", newLocation)
+            }, (location) => {
+                setLocation(location);
+                console.log("🚀 ~ newLocation:", location)
             });
 
         })();
     }, []);
 
-    const searchLocation = (text) =>{
+    const searchLocation = (text) => {
         const options = {
             method: 'GET',
             headers: {
-              accept: 'application/json',
-              Authorization: 'fsq3WHMGprK/+av7EmgdCAvnn1Qwm112bsOx/pmYmcyLiyg='
+                accept: 'application/json',
+                Authorization: 'fsq3WHMGprK/+av7EmgdCAvnn1Qwm112bsOx/pmYmcyLiyg='
             }
-          };
+        };
 
-          const {latitude, longitude} = location.coords;
+        const { latitude, longitude } = location.coords;
 
-          fetch(`https://api.foursquare.com/v3/places/search?query=${text}&ll=${latitude},${longitude}&radius=3000`, options)
+        fetch(`https://api.foursquare.com/v3/places/search?query=${text}&ll=${latitude},${longitude}&radius=3000`, options)
             .then(response => response.json())
             .then(response => {
                 console.log(response)
@@ -49,7 +49,7 @@ function PickUp({ navigation }) {
             .catch(err => console.error(err));
     }
 
-    const onPlaceSelect = (item)=>{
+    const onPlaceSelect = (item) => {
         setPickup(item);
     }
 
@@ -60,44 +60,41 @@ function PickUp({ navigation }) {
         text = JSON.stringify(location);
     }
 
-    
+
+
     return (
         <>
             {location && (
                 <View style={styles.container}>
-                    {/* <Text>Pickup</Text> */}
 
                     <TextInput placeholder='Search' onChangeText={searchLocation} />
 
-                    {places.map(item => {
-                        return(
-                            <TouchableOpacity onPress={() => onPlaceSelect(item)}>
-                                <Text>{item.name},{item.location.address}</Text>
-                            </TouchableOpacity>
-                        )
-                    })}
+                    {!pickup && <View>
+                        {places.map((item, index) => {
+                            return (
+                                <TouchableOpacity key={index} onPress={() => onPlaceSelect(item)}>
+                                    <Text>{item.name},{item.location.address}</Text>
+                                </TouchableOpacity>
+                            )
+                        })}
+                    </View>}
+
 
                     {pickup && <View>
                         <Text>Your selected location </Text>
                         <Text>{pickup.name}, {pickup.location.address}</Text>
-                        </View>
+                    </View>
                     }
-
-                    {/* <Button
-                        title="Destination"
-                        onPress={() => navigation.navigate('Destination')}
-                    /> */}
 
                     <MapView
                         showsMyLocationButton
                         showsUserLocation
-                        provider={PROVIDER_GOOGLE}
                         style={styles.map}
                         initialRegion={{
                             latitude: location.coords.latitude,
                             longitude: location.coords.longitude,
-                            latitudeDelta: 0.0001,
-                            longitudeDelta: 0.0001,
+                            latitudeDelta: 0.0010,
+                            longitudeDelta: 0.0010,
                         }}>
 
                         <Marker
@@ -109,6 +106,12 @@ function PickUp({ navigation }) {
                             description={"This is my marker description"} />
 
                     </MapView>
+
+                    <Button
+                        title="Destination"
+                        disabled={!pickup}
+                        onPress={() => navigation.navigate('Destination', { pickup })}
+                    />
                 </View>
 
             )}
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
     },
     map: {
         width: '100%',
-        height: '90%',
+        height: '80%',
         zIndex: 0
     },
 });
