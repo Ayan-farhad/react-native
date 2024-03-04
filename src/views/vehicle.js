@@ -1,5 +1,4 @@
-import { View, Text, Button } from "react-native";
-import { useState } from "react";
+import { View, Text, Button, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 function VehicleSelection({ route }) {
     const { pickup, destination } = route.params
@@ -42,19 +41,64 @@ function VehicleSelection({ route }) {
 
     return (
         <View>
-            <Text>Vehicle Selection</Text>
             <View>
-                <Text>{pickup.name}, {pickup.location.address}</Text>
+                <Text style={styles.locationText}>Your Selected Pickup Location</Text>
+                <Text style={styles.text}>{pickup.name}, {pickup.location.address}</Text>
             </View>
             <View>
-                <Text>{destination.name}, {destination.location.address}</Text>
+                <Text style={styles.locationText}>Your Selected Destination Location</Text>
+                <Text style={styles.text}>{destination.name}, {destination.location.address}</Text>
             </View>
 
-            <Button onPress={() => calculateDistance('Bike')} title="Bike" />
-            <Button onPress={() => calculateDistance('Auto')} title="Auto" />
-            <Button onPress={() => calculateDistance('Car')} title="Car" />
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity onPress={() => calculateDistance('Bike')} style={styles.button}>
+                    <Image source={require("../../assets/Bike.png")} style={styles.image} />
+                    <Text style={styles.buttonText}>Bike</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => calculateDistance('Auto')} style={styles.button}>
+                    <Image source={require("../../assets/Car.png")} style={styles.image} />
+                    <Text style={styles.buttonText}>Car</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => calculateDistance('Car')} style={styles.button}>
+                    <Image source={require("../../assets/AutoRickshaw.png")} style={styles.image} />
+                    <Text style={styles.buttonText}>Auto</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-    )
+    );
 }
 
 export default VehicleSelection;
+
+const styles = StyleSheet.create({
+    image: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 100,
+        resizeMode: 'cover'
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    button: {
+        width: 100,
+        height: 100,
+        alignItems: 'center'
+    },
+    buttonText: {
+        marginTop: 5,
+        color: 'green',
+    },
+    locationText:{
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'rgb(73, 72, 72)'
+    },
+    text:{
+        fontSize: 15,
+    }
+});

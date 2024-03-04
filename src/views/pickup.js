@@ -3,7 +3,7 @@ import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from "react-native";
 import * as Location from 'expo-location';
 
-function PickUp({ navigation }) {
+function Pickup({ navigation }) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const [places, setPlaces] = useState([]);
@@ -60,14 +60,16 @@ function PickUp({ navigation }) {
         text = JSON.stringify(location);
     }
 
-
+    if (!location) {
+        return <Text>Loading.....</Text>
+    }
 
     return (
         <>
             {location && (
                 <View style={styles.container}>
 
-                    <TextInput placeholder='Search' onChangeText={searchLocation} />
+                    <TextInput style={styles.input} placeholder='Search' onChangeText={searchLocation} />
 
                     {!pickup && <View>
                         {places.map((item, index) => {
@@ -107,11 +109,14 @@ function PickUp({ navigation }) {
 
                     </MapView>
 
-                    <Button
-                        title="Destination"
+                    <TouchableOpacity
+                        style={styles.button}
                         disabled={!pickup}
                         onPress={() => navigation.navigate('Destination', { pickup })}
-                    />
+                    >
+                        <Text style={styles.buttonText}>Destination</Text>
+                    </TouchableOpacity>
+
                 </View>
 
             )}
@@ -119,7 +124,7 @@ function PickUp({ navigation }) {
     );
 }
 
-export default PickUp;
+export default Pickup;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -129,4 +134,26 @@ const styles = StyleSheet.create({
         height: '80%',
         zIndex: 0
     },
+    input: {
+        width: '90%',
+        height: 50,
+        backgroundColor: 'gray',
+        borderRadius: 8,
+        alignSelf: 'center',
+        paddingLeft: 10,
+        marginTop: 20
+    },
+    button: {
+        width: 300,
+        backgroundColor: 'green',
+        padding: 10,
+        borderRadius: 5,
+        alignSelf: 'center',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 15,
+        textAlign: 'center',
+    }
+
 });

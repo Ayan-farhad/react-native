@@ -3,10 +3,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Ride from '../views/ride';
+import Dashboard from '../views/dashboard';
 import PickUp from '../views/pickup';
 import Destination from '../views/destination';
 import VehicleSelection from '../views/vehicle';
+import Pickup from '../views/pickup';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -17,7 +18,7 @@ function AppNavigator() {
         <>
             <NavigationContainer >
                 <Stack.Navigator >
-                    <Stack.Screen name="Ride" component={Ride} />
+                    <Stack.Screen name="Dashboard" component={Dashboard} />
                     <Stack.Screen name="PickUp" component={PickUp} />
                     <Stack.Screen name="Destination" component={Destination} />
                 </Stack.Navigator>
@@ -40,9 +41,23 @@ function WhatsAppTabs() {
 
 function MyDrawer() {
     return (
-        <Drawer.Navigator>
-            <Drawer.Screen name="Ride" component={Ride} />
-            <Drawer.Screen name="PickUp" component={PickUp} />
+        <Drawer.Navigator screenOptions={{
+            headerStyle: {
+                backgroundColor: 'rgb(139, 209, 34)', 
+            },
+            drawerStyle: {
+                backgroundColor: 'rgb(31, 31, 36)',
+            },
+            drawerLabelStyle:{
+                fontSize: 17
+            },
+            headerTintColor: '#fff',
+            drawerActiveTintColor: 'green',
+            drawerInactiveTintColor: 'rgb(187, 187, 187)',
+    
+        }}>
+            <Drawer.Screen name="Dashboard" component={Dashboard} />
+            <Drawer.Screen name="Pickup" component={Pickup} />
             <Drawer.Screen name="Destination" component={Destination} />
             <Drawer.Screen name="VehicleSelection" component={VehicleSelection} />
         </Drawer.Navigator>

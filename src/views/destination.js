@@ -59,7 +59,7 @@ function Destination({ route, navigation }) {
                     <Text>{pickup.name},{pickup.location.address}</Text>
                 </View>
 
-                <TextInput placeholder='Search' onChangeText={searchLocation} />
+                <TextInput style={styles.input} placeholder='Search' onChangeText={searchLocation} />
 
                 {!destination && <View>
                     {places.map((item, index) => {
@@ -100,11 +100,13 @@ function Destination({ route, navigation }) {
 
                 </MapView>
 
-                <Button
-                    title="VehicleSelection"
-                    disabled={!destination}
+                <TouchableOpacity
+                    style={styles.button}
+                    disabled={!pickup}
                     onPress={() => navigation.navigate('VehicleSelection', { pickup, destination })}
-                />
+                >
+                    <Text style={styles.buttonText}>Destination</Text>
+                </TouchableOpacity>
             </View>
         </>
     );
@@ -120,4 +122,26 @@ const styles = StyleSheet.create({
         height: '80%',
         zIndex: 0
     },
+    input: {
+        width: '90%',
+        height: 50,
+        backgroundColor: 'gray',
+        borderRadius: 8,
+        alignSelf: 'center',
+        paddingLeft: 10,
+        marginTop: 20
+    },
+    button: {
+        width: 300,
+        backgroundColor: 'green',
+        padding: 10,
+        borderRadius: 5,
+        alignSelf: 'center',
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 15,
+        textAlign: 'center',
+    }
+
 });
