@@ -31,7 +31,7 @@ function AppNavigator() {
 function WhatsAppTabs() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Ride" component={Ride} />
+            <Tab.Screen name="Dashboard" component={Dashboard} />
             <Tab.Screen name="PickUp" component={PickUp} />
             <Tab.Screen name="Destination" component={Destination} />
         </Tab.Navigator>
@@ -43,7 +43,7 @@ function MyDrawer() {
     return (
         <Drawer.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: 'rgb(139, 209, 34)', 
+                backgroundColor: 'yellow', 
             },
             drawerStyle: {
                 backgroundColor: 'rgb(31, 31, 36)',
@@ -51,15 +51,14 @@ function MyDrawer() {
             drawerLabelStyle:{
                 fontSize: 17
             },
-            headerTintColor: '#fff',
-            drawerActiveTintColor: 'green',
+            headerTintColor: 'black',
+            drawerActiveTintColor: 'yellow',
             drawerInactiveTintColor: 'rgb(187, 187, 187)',
-    
         }}>
             <Drawer.Screen name="Dashboard" component={Dashboard} />
             <Drawer.Screen name="Pickup" component={Pickup} />
             <Drawer.Screen name="Destination" component={Destination} />
-            <Drawer.Screen name="VehicleSelection" component={VehicleSelection} />
+            <Drawer.Screen name="Vehicle Selection" component={VehicleSelection} />
         </Drawer.Navigator>
     );
 }

@@ -1,33 +1,56 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 function Dashboard({ navigation }) {
     return (
-        <>
-            <View>
-                <TouchableOpacity
-                    style={styles.button}
-                    disabled={!pickup}
-                    onPress={() => navigation.navigate('Pickup')}
-                >
-                    <Text style={styles.buttonText}>Destination</Text>
-                </TouchableOpacity>
-            </View>
-        </>
+        <View style={styles.container}>
+            <Image
+                source={require('../../assets/logoDashboard.jpg')}
+                style={styles.logo}
+            />
+            <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('Pickup')}
+            >
+                <Text style={styles.buttonText}>Pickup</Text>
+            </TouchableOpacity>
+        </View>
     );
 }
 
 export default Dashboard;
+
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+    },
+    logo: {
+        width: '100%',
+        height: 300,
+        marginBottom: 30,
+    },
     button: {
-        width: 300,
-        backgroundColor: 'green',
-        padding: 10,
-        borderRadius: 5,
-        alignSelf: 'center',
+        width: 250,
+        backgroundColor: 'yellow',
+        padding: 15,
+        borderRadius: 10,
+        marginTop: 20,
+        shadowColor: 'rgba(0, 0, 0, 0.7)',
+        shadowOpacity: 0.8,
+        shadowRadius: 10,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        elevation: 5, 
     },
     buttonText: {
-        color: 'white',
-        fontSize: 15,
+        color: 'black',
+        fontSize: 18,
+        fontWeight: 'bold',
         textAlign: 'center',
-    }
-})
+    },
+});
