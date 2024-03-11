@@ -71,7 +71,7 @@ function Pickup({ navigation }) {
 
     if (!location) {
         return (
-            <Image source={require("../../assets/gif.gif")} style={{alignItems:'center'}} />
+            <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center',}}>Loading...</Text>
         )
     }
 
@@ -85,7 +85,7 @@ function Pickup({ navigation }) {
                         style={styles.input}
                         placeholder='Search'
                         onChangeText={searchLocation}
-                        value={searchText}
+                        // value={searchText}
                     />
 
                     {!pickup && <View>

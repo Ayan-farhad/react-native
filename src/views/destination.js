@@ -56,7 +56,9 @@ function Destination({ route, navigation }) {
     }
 
     if (!location) {
-        return <Text>Loading...</Text>
+        return (
+            <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center',}}>Loading...</Text>
+        )
     }
 
     return (
@@ -66,7 +68,7 @@ function Destination({ route, navigation }) {
                 style={styles.input}
                 placeholder='Search'
                 onChangeText={searchLocation}
-                value={searchText}
+                // value={searchText}
             />
 
             <View>
