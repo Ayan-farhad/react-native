@@ -120,7 +120,7 @@ function Destination({ route, navigation }) {
             </MapView>
 
             <TouchableOpacity
-                style={[styles.button, { backgroundColor: destination ? 'yellow' : 'lightgray' }]}
+                style={[styles.button, { backgroundColor: destination ? 'rgb(247, 247, 50)' : 'lightgray' }]}
                 disabled={!destination}
                 onPress={() => navigation.navigate('Vehicle Selection', { pickup, destination })}
             >
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 250,
-        backgroundColor: 'yellow',
+        backgroundColor: 'rgb(247, 247, 50)',
         padding: 10,
         borderRadius: 10,
         alignSelf: 'center',

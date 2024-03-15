@@ -133,7 +133,7 @@ function Pickup({ navigation }) {
                     </MapView>
 
                     <TouchableOpacity
-                        style={[styles.button, { backgroundColor: pickup ? 'yellow' : 'lightgray' }]}
+                        style={[styles.button, { backgroundColor: pickup ? 'rgb(247, 247, 50)' : 'lightgray' }]}
                         disabled={!pickup}
                         onPress={() => navigation.navigate('Destination', { pickup })}
                     >
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     button: {
         width: 250,
         height: 45,
-        backgroundColor: 'yellow',
+        backgroundColor: 'rgb(247, 247, 50)',
         padding: 10,
         borderRadius: 10,
         alignSelf: 'center',

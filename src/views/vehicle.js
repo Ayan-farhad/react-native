@@ -1,4 +1,12 @@
-import { View, Text, Button, Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    TouchableOpacity,
+    ScrollView
+} from "react-native";
+import riderRequest from "../config/firebase";
 
 function VehicleSelection({ route }) {
     const { pickup, destination } = route.params
@@ -21,10 +29,10 @@ function VehicleSelection({ route }) {
         Courier: 300,
         Truck: 500,
         miniCar: 180,
-        city: 1000, 
+        city: 1000,
     }
 
-    const calculateDistance = (vehicle) => {
+    const calculateDistance = async (vehicle) => {
         const { latitude: pickupLat, longitude: pickupLong } = pickup.geocodes.main;
         const { latitude: destinationLat, longitude: destinationLong } = destination.geocodes.main;
 
@@ -32,6 +40,9 @@ function VehicleSelection({ route }) {
 
         const fare = VehicleCharges[vehicle] * distance
         alert('Rs .' + fare.toFixed(2))
+
+        await riderRequest ({pickup, destination, carType: vehicle, fare,})
+        alert("Ride requested, please wait for the Driver")
     }
 
     function calcCrow(lat1, lon1, lat2, lon2) {

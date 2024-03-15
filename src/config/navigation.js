@@ -43,7 +43,7 @@ function MyDrawer() {
     return (
         <Drawer.Navigator screenOptions={{
             headerStyle: {
-                backgroundColor: 'yellow', 
+                backgroundColor: 'rgb(247, 247, 50)', 
             },
             drawerStyle: {
                 backgroundColor: 'rgb(31, 31, 36)',
@@ -52,7 +52,7 @@ function MyDrawer() {
                 fontSize: 17
             },
             headerTintColor: 'black',
-            drawerActiveTintColor: 'yellow',
+            drawerActiveTintColor: 'rgb(247, 247, 50)',
             drawerInactiveTintColor: 'rgb(187, 187, 187)',
         }}>
             <Drawer.Screen name="Dashboard" component={Dashboard} />
