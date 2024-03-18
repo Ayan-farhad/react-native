@@ -19,7 +19,7 @@ const Signin = () => {
 
     return (
         <View>
-            <Text>Sign In</Text>
+            <Text>SignIn</Text>
             <TextInput placeholder='Enter email' onChangeText={setEmail} />
             <TextInput placeholder='Enter password' onChangeText={setPassword} secureTextEntry={true} />
             <Button title='Signin' onPress={handleLoginBtn} />

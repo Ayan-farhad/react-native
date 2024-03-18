@@ -29,7 +29,7 @@ const Signup = () => {
 
   return (
     <View>
-      <Text>Sign Up</Text>
+      <Text>SignUp</Text>
       <TextInput
         placeholder='Enter fullname'
         onChangeText={(text) => {
