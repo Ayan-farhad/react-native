@@ -1,45 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import Dashboard from '../views/dashboard';
-import PickUp from '../views/pickup';
 import Destination from '../views/destination';
 import VehicleSelection from '../views/vehicle';
 import Pickup from '../views/pickup';
 import Signup from '../views/signup';
 import Signin from '../views/signin';
 
-const Stack = createNativeStackNavigator();
-const Tab = createMaterialTopTabNavigator();
 const Drawer = createDrawerNavigator();
-
-function AppNavigator() {
-    return (
-        <>
-            <NavigationContainer >
-                <Stack.Navigator >
-                    <Stack.Screen name="Dashboard" component={Dashboard} />
-                    <Stack.Screen name="PickUp" component={PickUp} />
-                    <Stack.Screen name="Destination" component={Destination} />
-                </Stack.Navigator>
-            </NavigationContainer>
-
-        </>
-    );
-}
-
-function WhatsAppTabs() {
-    return (
-        <Tab.Navigator>
-            <Tab.Screen name="Dashboard" component={Dashboard} />
-            <Tab.Screen name="PickUp" component={PickUp} />
-            <Tab.Screen name="Destination" component={Destination} />
-        </Tab.Navigator>
-
-    );
-}
 
 function MyDrawer() {
     return (
@@ -68,4 +36,4 @@ function MyDrawer() {
     );
 }
 
-export { AppNavigator, WhatsAppTabs, MyDrawer };
+export { MyDrawer };
