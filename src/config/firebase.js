@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app); // Pass the Firebase app instance to getAuth()
+const auth = getAuth(app);
 
 async function riderRequest(riderRequest) {
   try {

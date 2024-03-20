@@ -41,7 +41,7 @@ function VehicleSelection({ route }) {
         const fare = VehicleCharges[vehicle] * distance
         alert('Rs .' + fare.toFixed(2))
 
-        await riderRequest ({pickup, destination, carType: vehicle, fare,})
+        await riderRequest ({pickup, destination, carType: vehicle, fare})
         alert("Ride requested, please wait for the Driver")
     }
 
