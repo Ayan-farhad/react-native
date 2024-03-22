@@ -32,7 +32,7 @@ async function signUp(email, password, fullname) {
       fullname,
       age,
       email
-  });
+    });
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
