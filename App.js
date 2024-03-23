@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { MyDrawer } from './src/config/navigation';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
